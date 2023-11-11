@@ -1,5 +1,5 @@
 ___
-Задача на C#
+# Задача на C#
 ___
 Напишите на C# библиотеку для поставки внешним клиентам, которая умеет вычислять площадь круга по радиусу и треугольника по трем сторонам. Дополнительно к работоспособности оценим:
 
@@ -12,15 +12,17 @@ ___
 Проверку на то, является ли треугольник прямоугольным 
 
 ___
-Задача SQL
+## Задача SQL
 ___
 
 В базе данных MS SQL Server есть продукты и категории. Одному продукту может соответствовать много категорий, в одной категории может быть много продуктов. Напишите SQL запрос для выбора всех пар «Имя продукта – Имя категории». Если у продукта нет категорий, то его имя все равно должно выводиться.
 
 ___
-Сначала создадим структуру БД:
+## Сначала создадим структуру БД:
 ___
-CREATE TABLE Products(
+‹html›
+‹body›
+‹p›CREATE TABLE Products(
 id INT PRIMARY KEY IDENTITY, 
 name VARCHAR(255) NOT NULL);
 
@@ -34,17 +36,18 @@ category_id INT NOT NULL,
 FOREIGN KEY(products_id) REFERENCES Products(id) ON DELETE CASCADE,
 FOREIGN KEY(category_id) REFERENCES Category(id) ON DELETE CASCADE);
 
-CREATE UNIQUE INDEX prod_cat ON ProdCat(products_id, category_id);
-
+CREATE UNIQUE INDEX prod_cat ON ProdCat(products_id, category_id);‹/p›
+‹/body›
+‹ /html›
 ___
-Заполним базы данных:
+## Заполним базы данных:
 ___
 INSERT INTO Products VALUES('Собака'), ('Тараканы'), ('Корм для собак');
 INSERT INTO Category VALUES('Животные'), ('Еда');
 INSERT INTO ProdCat VALUES(1, 1), (2, 1), (3, 2);
 
 ___
-Решение задачи:
+## Решение задачи:
 ___
 SELECT p.name AS product, c.name AS category FROM Products AS p
 LEFT JOIN ProdCat AS pc ON p.id = pc.products_id
