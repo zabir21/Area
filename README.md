@@ -20,7 +20,7 @@ ___
 ___
 ## Сначала создадим структуру БД:
 ___
-  CREATE TABLE Products(
+'''CREATE TABLE Products(
   id INT PRIMARY KEY IDENTITY, 
   name VARCHAR(255) NOT NULL);
 
@@ -35,6 +35,7 @@ ___
   FOREIGN KEY(category_id) REFERENCES Category(id) ON DELETE CASCADE);
 
   CREATE UNIQUE INDEX prod_cat ON ProdCat(products_id, category_id);
+'''
 ___
 ## Заполним базы данных:
 ___
