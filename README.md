@@ -1,4 +1,6 @@
-#Задача на C#
+___
+Задача на C#
+___
 Напишите на C# библиотеку для поставки внешним клиентам, которая умеет вычислять площадь круга по радиусу и треугольника по трем сторонам. Дополнительно к работоспособности оценим:
 
 Юнит-тесты
@@ -9,11 +11,15 @@
 
 Проверку на то, является ли треугольник прямоугольным 
 
-#Задача SQL
+___
+Задача SQL
+___
 
 В базе данных MS SQL Server есть продукты и категории. Одному продукту может соответствовать много категорий, в одной категории может быть много продуктов. Напишите SQL запрос для выбора всех пар «Имя продукта – Имя категории». Если у продукта нет категорий, то его имя все равно должно выводиться.
 
-##Сначала создадим структуру БД:
+___
+Сначала создадим структуру БД:
+___
 CREATE TABLE Products(
 id INT PRIMARY KEY IDENTITY, 
 name VARCHAR(255) NOT NULL);
@@ -30,12 +36,16 @@ FOREIGN KEY(category_id) REFERENCES Category(id) ON DELETE CASCADE);
 
 CREATE UNIQUE INDEX prod_cat ON ProdCat(products_id, category_id);
 
-##Заполним базы данных:
+___
+Заполним базы данных:
+___
 INSERT INTO Products VALUES('Собака'), ('Тараканы'), ('Корм для собак');
 INSERT INTO Category VALUES('Животные'), ('Еда');
 INSERT INTO ProdCat VALUES(1, 1), (2, 1), (3, 2);
 
-##Решение задачи:
+___
+Решение задачи:
+___
 SELECT p.name AS product, c.name AS category FROM Products AS p
 LEFT JOIN ProdCat AS pc ON p.id = pc.products_id
 INNER JOIN Category AS c ON c.id = pc.category_id
